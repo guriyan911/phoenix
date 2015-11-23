@@ -31,7 +31,7 @@ public class ApiController {
 		list.add(customer);
 		//list = new ArrayList<>();
 		Map<String, List<Customer>> map = new HashMap<String, List<Customer>>();
-		map.put("staff", list);
+		map.put("data", list);
 		return map;
 	}
 }
