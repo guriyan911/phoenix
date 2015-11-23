@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('customers', function() {
+  //this.message = 'Hello world!';
+  this.get('http://localhost:18080/api/customers').
+  success(function(data) {
+      this.customers = data;
+  });
+});
+</script>
+</head>
+<body>
+ <div ng-app="myApp">
+  <div ng-controller="customer in customers">
+  {{customer.id}} {{customer.firstName}} {{customer.lastName}}
+  </div>
+ </div>
+</body>
+</html>

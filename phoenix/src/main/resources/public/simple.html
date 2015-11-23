@@ -1,0 +1,36 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org" ng-app>
+<head>
+    <title>Hello AngularJS</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+    <script src="hello.js?20151123"></script>
+</head>
+<body>
+    <p>件数が0件だとどうなるのか？どうしたら読み込みし直すのか？</p>
+    <div ng-controller="Hello">
+        <ul ng-repeat="customer in customers">
+            <li>{{customer.id}} {{customer.firstName}} {{customer.lastName}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+var data = {
+        "name": "hoge",
+    };
+    
+    // 通信実行
+    $.ajax({
+        type:"get",                
+        url:"http://localhost:18080/api/customers",        
+        data:JSON.stringify(data), 
+        contentType: 'application/json', 
+        dataType: "json",           
+        success: function(json_data) {   
+          // 成功時の処理
+            console.log(data);
+            alert(data);
+        }
+    });
+</script>
+</html>
