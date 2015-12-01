@@ -5,7 +5,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -14,9 +16,11 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
+@ToString(exclude = "project")
 @Table(name="project_month")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,4 +37,9 @@ public class ProjectMonth {
 	@OneToMany(mappedBy = "projectMonth")
 	@JsonManagedReference("ProjectProblem")
 	private List<ProjectProblem> projectProblems;
+	// OneToOne
+	@OneToOne
+	@JoinColumn(name = "projectId",referencedColumnName = "projectId", insertable=false, updatable=false)
+	private Project project;
+	
 }
