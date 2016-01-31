@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"/>
 <title>ログインフォーム</title>
 </head>
 <body>
@@ -9,7 +9,7 @@
   <h1>担当者別報告システム</h1>
   <form class="form-signin" method="post" th:action="@{/login}">
     <h2 class="form-signin-heading">ログインフォーム</h2>
-    <div th:if="{$param.error}" class="alert alert-danger">
+    <div th:if="${param.error}" class="alert alert-danger">
       invalid username and password
     </div>
     <input type="text" class="form-control" name="username" placeholder="Username" required="required" autofocus="autofocus" />
