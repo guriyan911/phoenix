@@ -1,5 +1,7 @@
 package com.kamos.phoenix;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +22,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
-
+    @Autowired
+    private DataSource dataSource;
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -40,12 +44,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication().dataSource(dataSource);
         auth
             .userDetailsService(userDetailsService)
             .passwordEncoder(new StandardPasswordEncoder());
-        auth
-        	.inMemoryAuthentication()
-        		.withUser("yano").password("pass").roles("USER");
+//        auth
+//        	.inMemoryAuthentication()
+//        		.withUser("yano").password("pass").roles("USER");
+        // inMemoryではなくDBアクセスで認証したい
+        
+        auth.jdbcAuthentication().dataSource(dataSource)
+        .usersByUsernameQuery("select username, password, enabled from yybingodb.user where username = ?")
+        .authoritiesByUsernameQuery("select username, role from yybingodb.user_role where username = ?");
+
     }
     
     @Configuration
