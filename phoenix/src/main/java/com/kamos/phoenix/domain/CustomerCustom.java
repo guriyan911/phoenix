@@ -1,12 +1,13 @@
 package com.kamos.phoenix.domain;
 
+import java.util.List;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class Customer {
-	private String id;
-	private String firstName;
-	private String lastName;
+public class CustomerCustom extends Customer {
+	private String tel;
+	private List<KptCustom> kpts;
 }

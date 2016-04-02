@@ -5,8 +5,6 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class Customer {
-	private String id;
-	private String firstName;
-	private String lastName;
+public class KptCustom extends Kpt {
+	private String kptValue;
 }

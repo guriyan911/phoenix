@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
+<head>
+<title>object test</title>
+</head>
+<body>
+  <h1 th:inline="text">Thymeleafでの階層構造のクラス参照について確認する</h1>
+  <p>
+    継承元のプロパティ参照： <a th:text="${test.firstName}">here</a>
+  </p>
+  <p>
+    継承元のプロパティ参照： <a th:text="${test.tel}">here</a>
+  </p>
+  <table>
+    <tr th:each="kpt : ${test.kpts}">
+      <td th:text="${kpt.kptId}"></td>
+      <td th:text="${kpt.kptValue}"></td>
+      
+    </tr>
+  </table>
+</body>
+</html>

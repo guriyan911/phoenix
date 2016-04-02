@@ -5,8 +5,8 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class Customer {
-	private String id;
-	private String firstName;
-	private String lastName;
+public class Kpt {
+	private String kptId;
+	private String kptName;
+	private String kptKind;
 }
