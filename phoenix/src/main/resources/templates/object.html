@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
   xmlns:th="http://www.thymeleaf.org"
-  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
->
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <title>object test</title>
 </head>
@@ -20,6 +19,14 @@
       <td th:text="${kpt.kptValue}"></td>
       
     </tr>
+    <tr>
+      <td><div th:text="${session.staff.staffName}">[...]</div></td>
+      <td><div th:text="${#dates.format(session.staff.lastUpdate, 'yyyy-MM-dd')}">[...]</div></td>
+    </tr>
+    <tr>
+      <td>        <p>Click <a th:href="@{/hello}">here</a> to see a hello.</p></td>
+    </tr>
+      
   </table>
 </body>
 </html>

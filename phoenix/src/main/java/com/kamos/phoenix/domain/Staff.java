@@ -1,5 +1,7 @@
 package com.kamos.phoenix.domain;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -27,4 +29,5 @@ public class Staff {
 	private String staffKana;
 	@NotNull
 	private String staffAbbr;
+	private Date lastUpdate;
 }

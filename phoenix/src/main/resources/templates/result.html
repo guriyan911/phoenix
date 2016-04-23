@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-    <head>
-        <title>result test</title>
-    </head>
-    <body>
-        <h1 th:inline="text">Result [[${#httpServletRequest.remoteUser}]]!</h1>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-        </form>
-        <p>Click <a th:href="@{/hello}">here</a> to see a hello.</p>
-        <p>Click <a th:href="@{/object}">here</a> to see a object test.</p>
-        <p>Click <a th:href="@{/objectExtends}">here</a> to see a objectExtends test.</p>
-    </body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>result test</title>
+</head>
+<body>
+  <h1 th:inline="text">Result
+    [[${#httpServletRequest.remoteUser}]]!</h1>
+  <form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out" />
+  </form>
+  <p>
+    Click <a th:href="@{/hello}">here</a> to see a hello.
+  </p>
+  <p>
+    Click <a th:href="@{/object}">here</a> to see a object test.
+  </p>
+  <p>
+    Click <a th:href="@{/objectExtends}">here</a> to see a objectExtends
+    test.
+  </p>
+  <div>
+    <ol>
+      <li sec:authorize="hasRole('ROLE_ADMIN')">
+        <a href="/hello"><i class="fa fa-table fa-fw"></i>hello</a>
+      </li>
+      <li sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
+        <a href="/home"><i class="fa fa-edit fa-fw"></i>home</a>
+      </li>
+    </ol>
+  </div>
+</body>
 </html>
